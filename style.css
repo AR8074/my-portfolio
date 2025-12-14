@@ -1,0 +1,204 @@
+/* --- Global & Container Styles --- */
+body {
+    background: #eaf2fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.book-container {
+    perspective: 1800px;
+    width: 700px;
+    margin: 60px auto;
+    position: relative;
+    border: 6px solid #2563eb;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.18), 0 1.5px 0 #2563eb inset;
+    background: #fff;
+    overflow: hidden;
+}
+
+/* --- Page Styles --- */
+.page {
+    position: relative;
+    width: 700px;
+    height: 700px;
+    perspective: 1200px;
+    overflow: hidden;
+}
+
+.page-side {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transform: rotateX(90deg) scale(0.95);
+    transition: 
+        opacity 0.5s,
+        transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+.page-side.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+    transform: rotateX(0deg) scale(1);
+}
+
+/* Optional: add a slight shadow for the active page */
+.page-side.active {
+    box-shadow: 0 16px 40px rgba(37,99,235,0.18);
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 48px 36px 36px 36px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Photo and Content Styling --- */
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%; /* Makes the photo circular */
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 4px solid #2563eb;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.15);
+}
+
+.content-area {
+    margin: 20px 0;
+    text-align: left;
+}
+
+/* --- Interactive Element Styling --- */
+button, .nav-btn {
+    margin-top: 28px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #2563eb 60%, #4f8cff 100%);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #2563eb22;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover, .nav-btn:hover {
+    background: linear-gradient(90deg, #1741a6 60%, #2563eb 100%);
+    transform: scale(1.05);
+}
+
+.arrow {
+    font-size: 1.2em;
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+/* --- The Page Turn Animation (Activated by JS) --- */
+.page-turned {
+    /* Rotates the entire 'page' container 180 degrees */
+    transform: rotateY(-180deg);
+}
+
+/* --- Additional Animations --- */
+.cartoon-character {
+    width: 180px;
+    margin-bottom: 24px;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 4px 12px #2563eb33);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-22px);}
+}
+
+h1, h2, h3 {
+    color: #102040;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 2.6em;
+    margin-top: 0;
+    text-shadow: 0 2px 8px #2563eb22;
+}
+
+h2 {
+    font-size: 1.7em;
+    margin-top: 0;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin-top: 18px;
+    color: #2563eb;
+    font-weight: 700;
+}
+
+.welcome-quote {
+    font-size:1.3em;
+    margin: 30px 0 40px 0;
+    color:#2563eb;
+    font-weight:600;
+    text-align: center;
+}
+
+p, ul {
+    color: #2a3550;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+.nav-btns {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-btn {
+    padding: 12px 32px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #2563eb 60%, #4f8cff 100%);
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #2563eb22;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.nav-btn:hover {
+    background: linear-gradient(90deg, #1741a6 60%, #2563eb 100%);
+    transform: scale(1.05);
+}
